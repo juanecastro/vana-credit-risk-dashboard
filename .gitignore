@@ -1,11 +1,11 @@
-
+# ==========================================
 # Python
+# ==========================================
 __pycache__/
 *.py[cod]
+*$py.class
 *.so
-build/
-dist/
-*.egg-info/
+.Python
 
 # Virtual environments
 .venv/
@@ -13,31 +13,79 @@ venv/
 env/
 ENV/
 
-# Secrets
+# Python packaging
+build/
+dist/
+*.egg-info/
+
+# ==========================================
+# Environment variables and secrets
+# ==========================================
 .env
 .env.*
 !.env.example
+
 .streamlit/secrets.toml
-*.pem
-*.key
 
-# Local development environment settings
+# ==========================================
+# IDE and editor settings
+# ==========================================
 .vscode/
-.ipynb_checkpoints/
+.idea/
+*.swp
+*.swo
 
-# Temporary outputs
-credit_card/data/processed/*
-!credit_card/data/processed/.gitkeep
-
-
-# Logs and caches
-*.log
-*.tmp
-.cache/
-.pytest_cache/
-.mypy_cache/
-.ruff_cache/
-
-# Operating system
+# ==========================================
+# Operating system files
+# ==========================================
 .DS_Store
 Thumbs.db
+desktop.ini
+
+# ==========================================
+# Jupyter
+# ==========================================
+.ipynb_checkpoints/
+
+# ==========================================
+# Logs and temporary files
+# ==========================================
+*.log
+*.tmp
+*.bak
+*.old
+~*
+
+# Local backups
+backup/
+backups/
+*_backup/
+*_backup.*
+
+# ==========================================
+# Generated exports and outputs
+# ==========================================
+exports/
+output/
+outputs/
+
+# Excel temporary lock files
+~$*.xlsx
+~$*.xls
+
+# ==========================================
+# Testing and coverage
+# ==========================================
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+
+# ==========================================
+# Streamlit cache
+# ==========================================
+.streamlit/cache/
+# Private keys and certificates
+*.pem
+*.key

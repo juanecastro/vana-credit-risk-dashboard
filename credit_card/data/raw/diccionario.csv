@@ -1,0 +1,27 @@
+﻿hoja,campo,descripcion
+Cuentas,id_cuenta,Identificador de la tarjeta
+Cuentas,fecha_apertura / cosecha,Fecha y mes de originacion (cosecha)
+Cuentas,canal,CROSS_SELL_VANA = clientes con historial de prestamos Vana; DIGITAL_ABIERTO = solicitud en app/web sin relacion previa; ALIADO_COMERCIAL = originada en punto de venta de un comercio aliado
+Cuentas,id_aliado,Comercio aliado que origino la tarjeta (solo canal aliado)
+Cuentas,"region, edad, tipo_empleo",Datos sociodemograficos declarados
+Cuentas,ingreso_mensual_declarado,Ingreso declarado en la solicitud (no verificado)
+Cuentas,historial_buro,CON_HISTORIAL / SIN_HISTORIAL en buro de credito
+Cuentas,score_originacion,Score de originacion (mayor = menos riesgo). Politica: cutoff 600 hasta may-2026 y 560 desde jun-2026
+Cuentas,banda_riesgo_originacion,"A >=700, B 660-699, C 630-659, D 600-629, E 560-599"
+Cuentas,limite_inicial,Limite asignado al originar (Q)
+Cortes,fecha_corte,Fecha del corte mensual
+Cortes,meses_en_libros,Meses desde la apertura (0 = abrio ese mes)
+Cortes,estado,ACTIVA / CASTIGADA (castigo a 180 dias)
+Cortes,limite_anterior / limite,Limite antes y despues del corte (difieren si hubo aumento)
+Cortes,aumento_limite_en_corte,SI si la tarjeta recibio aumento de limite en este corte
+Cortes,saldo_corte_anterior / pago_minimo_anterior,Saldo y pago minimo exigible del estado de cuenta anterior
+Cortes,pago_realizado,Pago recibido entre el corte anterior y este corte
+Cortes,tipo_pagador,"Clasificacion del pago del mes: TOTALERO (paga >= saldo anterior), ENTRE_MINIMO_Y_TOTAL, PAGA_MINIMO (paga el minimo, hasta +5%), MENOS_DEL_MINIMO (paga algo pero < minimo), NO_PAGA (cero), SIN_SALDO, NUEVA_SIN_PAGO_EXIGIBLE"
+Cortes,compras_mes / intereses_mes / cargos_mora_mes,Movimientos del mes (Q)
+Cortes,saldo_corte / pago_minimo,Saldo y pago minimo del estado de cuenta emitido en este corte
+Cortes,dias_mora / altura_mora,Dias de atraso al corte y su bucket
+Cortes,gestion_cobranza_mes,Para cuentas que estaban en atraso en el corte anterior: si cobranza logro contactarlas durante el mes (vacio = no estaba en atraso)
+Cortes,score_comportamiento,"Score de comportamiento calculado al corte (1-999, mayor = menos riesgo). Hoy no se usa en ninguna politica"
+Cortes,saldo_castigado,Saldo enviado a castigo en este corte
+Campanas_limite,grupo,"TRATAMIENTO (recibio +50% de limite) / CONTROL (elegible, no recibio por sorteo)"
+Campanas_limite,tipo_pagador_en_campana / altura_mora_en_campana,Situacion de la cuenta en el corte de la campana
