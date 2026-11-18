@@ -290,7 +290,7 @@ def sidebar(accounts, cuts, campaigns, pages, current):
     logo_path = Path(__file__).resolve().parents[2] / "assets" / "vana_wordmark.svg"
     st.sidebar.image(str(logo_path), width=150)
     st.sidebar.header("ANÁLISIS DE CARTERA")
-    for page_title in ["Resumen ejecutivo", "Portafolio", "Riesgo de crédito"]:
+    for page_title in ["Key Metrics", "Portafolio", "Riesgo de crédito"]:
         st.sidebar.page_link(pages[page_title], label=page_title)
     st.sidebar.header("GESTIÓN DE CARTERA")
     for page_title in ["Cobranza y límites", "Economía del portafolio"]:
@@ -595,7 +595,7 @@ def executive_page(accounts, cuts, campaigns, selected_date, selected_dates):
     hist = monthly_portfolio(cuts, accounts)
     hist = hist[hist.fecha_corte.isin(selected_dates)]
     cur = hist[hist.fecha_corte.eq(selected_date)].iloc[-1]
-    page_header("Resumen ejecutivo", "Estado y evolución del portafolio de tarjeta de crédito.", accounts, cuts, campaigns, selected_date, "resumen")
+    page_header("Key Metrics", "Estado y evolución del portafolio de tarjeta de crédito.", accounts, cuts, campaigns, selected_date, "resumen")
     metric_row([
         ("Saldo activo", fmt_money(cur.active_balance / 1e6, 1) + "M", None),
         ("Mora 30+ sobre saldo", fmt_pct(cur.dpd30_balance_rate), None),
@@ -1104,7 +1104,7 @@ def render_app():
     inject_css()
     accounts, cuts, campaigns = load_data(_source_fingerprint())
     view_state = {}
-    page_titles = ["Resumen ejecutivo", "Portafolio", "Riesgo de crédito", "Cobranza y límites", "Economía del portafolio"]
+    page_titles = ["Key Metrics", "Portafolio", "Riesgo de crédito", "Cobranza y límites", "Economía del portafolio"]
 
     def page_runner(title):
         def _run():
@@ -1116,7 +1116,7 @@ def render_app():
                 st.info("No hay cuentas para la combinación de filtros seleccionada. Ajusta los filtros de cartera.")
                 return
             selected_date = max(dates)
-            if title == "Resumen ejecutivo":
+            if title == "Key Metrics":
                 executive_page(fa, fc, fm, selected_date, dates)
             elif title == "Portafolio":
                 portfolio_page(fa, fc, fm, selected_date, dates)
